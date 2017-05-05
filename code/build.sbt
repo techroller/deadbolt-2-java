@@ -2,12 +2,12 @@ name := "deadbolt-java"
 
 lazy val root = (project in file(".")).enablePlugins(PlayJava)
 
-scalaVersion := "2.11.7"
+scalaVersion := "2.11.8"
 
 organization := "be.objectify"
 
 libraryDependencies ++= Seq(
-  cache,
+  cacheApi,
   "org.mockito" % "mockito-all" % "1.10.19" % "test"
 )
 

@@ -16,6 +16,8 @@
 package be.objectify.deadbolt.java.filters;
 
 import akka.stream.Materializer;
+import play.core.j.JavaHelpers;
+import play.core.j.JavaHelpers$class;
 import play.mvc.Filter;
 import play.mvc.Http;
 
@@ -46,6 +48,7 @@ public abstract class AbstractDeadboltFilter extends Filter
         {
             requestBuilder.cookie(cookie);
         }
-        return new Http.Context(requestBuilder);
+        JavaHelpers helpers = new JavaHelpersImpl();
+        return new Http.Context(requestBuilder, helpers.createContextComponents());
     }
 }

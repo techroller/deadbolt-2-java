@@ -1,6 +1,10 @@
+@import play.api.Application
 @import be.objectify.deadbolt.java.DeadboltHandler
-@import be.objectify.deadbolt.java.ViewAccessPoint.Implicits._
-@import play.api.Play.current
+@import be.objectify.deadbolt.java.ViewSupport
+@import be.objectify.deadbolt.java.cache.HandlerCache
+
+@this(application: Application, viewSupport: ViewSupport, handlerCache: HandlerCache)
+
 @(handler: DeadboltHandler = handlerCache.get(), content: Optional[String] = Optional.empty(), timeout: java.util.function.Supplier[Long] = viewSupport.defaultTimeout)(body: => Html)
 
 @if(viewSupport.viewSubjectNotPresent(handler, content, timeout.get())) {
